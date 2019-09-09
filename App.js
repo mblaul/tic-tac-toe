@@ -19,7 +19,7 @@ import {
   Text,
 } from 'native-base';
 
-import GameStateContainer from './components/GameStateContainer';
+import ContentContainer from './components/ContentContainer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -57,7 +57,7 @@ export default class App extends React.Component {
           <Right />
         </Header>
         <Content>
-          <GameStateContainer />
+          <ContentContainer />
         </Content>
         <Footer>
           <FooterTab>
