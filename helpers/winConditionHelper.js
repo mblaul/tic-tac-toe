@@ -13,20 +13,24 @@ export function checkHorizontalWin(cellValues) {
 }
 
 export function checkVerticalWin(cellValues) {
-  const columnCount = Object.keys(cellValues).length;
-  let isThereAWinner;
+  const rows = Object.values(cellValues);
+  const rowsLength = rows.length;
+  let columnValues = [];
 
-  for (let i = 0; i < columnCount - 1; i++) {
-    isThereAWinner =
-      cellValues[0][i] &&
-      cellValues[0][i] === cellValues[1][i] &&
-      cellValues[0][i] === cellValues[2][i] &&
-      cellValues[1][i] === cellValues[2][i];
-
-    if (isThereAWinner) break;
+  for (let column = 0; column < rowsLength; column++) {
+    columnValues.push([ cellValues[0][column], cellValues[1][column], cellValues[2][column] ]);
   }
 
+  const isThereAWinner = checkForRepeatingValues(columnValues);
   return isThereAWinner;
 }
 
-export function checkDiagonalWin(cellValues) {}
+export function checkDiagonalWin(cellValues) {
+  const diagonals = [
+    [ cellValues[0][2], cellValues[1][1], cellValues[2][0] ],
+    [ cellValues[0][0], cellValues[1][1], cellValues[2][2] ],
+  ];
+
+  const isThereAWinner = checkForRepeatingValues(diagonals);
+  return isThereAWinner;
+}
