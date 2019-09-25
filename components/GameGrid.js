@@ -8,7 +8,7 @@ class GameGrid extends Component {
   render() {
     const { cellValues, playerInfo, updateCell } = this.props;
     return (
-      <Container style={{ backgroundColor: 'black', height: 300, width: 300, margin: 50 }}>
+      <Container style={{ backgroundColor: 'rebeccapurple', height: 300, width: 300, margin: 50 }}>
         {_.keys(cellValues).map((index) => (
           <GridRow
             key={index}

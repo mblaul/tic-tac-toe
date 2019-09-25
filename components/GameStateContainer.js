@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import GameGrid from './GameGrid';
+import { H1, Icon } from 'native-base';
 
 import _ from 'lodash';
 import { checkHorizontalWin, checkVerticalWin, checkDiagonalWin } from '../helpers/winConditionHelper';
-import { Button, Text } from 'native-base';
+
+import GameGrid from './GameGrid';
 import EndGame from './EndGame';
 
 class GameStateContainer extends Component {
@@ -62,7 +63,9 @@ class GameStateContainer extends Component {
 
     return (
       <Fragment>
-        <Text style={{ textAlign: `center` }}>Player {playerInfo.activePlayer}'s Turn!</Text>
+        <H1 style={{ textAlign: `center`, paddingTop: 10, fontFamily: 'Righteous', fontSize: 36, marginTop: 50 }}>
+          Player {playerInfo.activePlayer}'s Turn!
+        </H1>
         <GameGrid cellValues={cellValues} updateCell={this.updateCell} playerInfo={playerInfo} />
         {/* Someone has won! */}
         {winnerInfo && <EndGame winnerInfo={winnerInfo} setCurrentGame={setCurrentGame} />}

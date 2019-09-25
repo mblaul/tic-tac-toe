@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { Button } from 'native-base';
+import { Button, Icon } from 'native-base';
 import { Col } from 'react-native-easy-grid';
 
 export class GridCell extends Component {
@@ -10,11 +10,19 @@ export class GridCell extends Component {
     return (
       <Col style={{ backgroundColor: 'white', height: 95, margin: 2.5 }}>
         <Button
+          icon
+          primary
           height={'100%'}
-          style={{ backgroundColor: 'white' }}
+          transparent
           onPress={() => updateCell(cellYPosition, cellXPosition, playerInfo.mark)}
         >
-          <Text style={{ alignContent: 'center', justifyContent: 'center' }}>{value || ''}</Text>
+          {value && (
+            <Icon
+              name="Ionicons"
+              name={`${value === '❌' ? 'logo-xbox' : 'logo-playstation'}`}
+              style={{ paddingLeft: 10, fontSize: 50, color: 'black' }}
+            />
+          )}
         </Button>
       </Col>
     );

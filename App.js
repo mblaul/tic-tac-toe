@@ -33,6 +33,7 @@ export default class App extends React.Component {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf'),
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      Righteous: require('./assets/fonts/Righteous.ttf'),
       ...Ionicons.font,
     });
     this.setState({ isReady: true });
@@ -45,25 +46,20 @@ export default class App extends React.Component {
 
     return (
       <Container>
-        <Header>
+        <Header style={{ backgroundColor: 'rebeccapurple' }} androidStatusBarColor="rebeccapurple">
           <Left>
             <Button transparent>
               <Icon name="menu" />
             </Button>
           </Left>
           <Body>
-            <Title>TicTacToesies</Title>
+            <Title style={{ fontFamily: 'Righteous' }}>TicTacToesies</Title>
           </Body>
           <Right />
         </Header>
         <Content>
           <ContentContainer />
         </Content>
-        <Footer>
-          <FooterTab>
-            <Text>Footer</Text>
-          </FooterTab>
-        </Footer>
       </Container>
     );
   }
