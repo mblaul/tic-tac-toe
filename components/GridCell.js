@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { Col } from 'react-native-easy-grid';
 
@@ -16,13 +15,7 @@ export class GridCell extends Component {
           transparent
           onPress={() => updateCell(cellYPosition, cellXPosition, playerInfo.mark)}
         >
-          {value && (
-            <Icon
-              name="Ionicons"
-              name={`${value === '❌' ? 'logo-xbox' : 'logo-playstation'}`}
-              style={{ paddingLeft: 10, fontSize: 50, color: 'black' }}
-            />
-          )}
+          {value && <Icon name="Ionicons" name={value} style={{ paddingLeft: 10, fontSize: 50, color: 'black' }} />}
         </Button>
       </Col>
     );

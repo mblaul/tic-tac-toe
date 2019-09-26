@@ -1,26 +1,34 @@
 import React, { Component, Fragment } from 'react';
-import { H1, Icon } from 'native-base';
+import { H1 } from 'native-base';
 
 import _ from 'lodash';
 import { checkHorizontalWin, checkVerticalWin, checkDiagonalWin } from '../helpers/winConditionHelper';
-
+import { getPlayerMarks } from '../helpers/funHelpers';
 import GameGrid from './GameGrid';
 import EndGame from './EndGame';
 
 class GameStateContainer extends Component {
-  state = {
-    cellValues: {
-      0: [ null, null, null ],
-      1: [ null, null, null ],
-      2: [ null, null, null ],
-    },
-    isGameOver: false,
-    playerInfo: {
-      activePlayer: 1,
-      mark: `❌`,
-    },
-    winnerInfo: null,
-  };
+  constructor() {
+    super();
+    const playerMarks = getPlayerMarks();
+
+    this.state = {
+      cellValues: {
+        0: [ null, null, null ],
+        1: [ null, null, null ],
+        2: [ null, null, null ],
+      },
+      isGameOver: false,
+      playerInfo: {
+        activePlayer: 1,
+        mark: playerMarks[0],
+      },
+      playerMarks,
+      winnerInfo: null,
+    };
+  }
+
+  componentDidMount() {}
 
   checkForWinner = (cellValues) => {
     const { playerInfo } = this.state;
@@ -36,7 +44,7 @@ class GameStateContainer extends Component {
   };
 
   updateCell = (cellYPosition, cellXPosition, cellValue) => {
-    const { playerInfo: { activePlayer }, cellValues } = this.state;
+    const { playerInfo: { activePlayer }, playerMarks, cellValues } = this.state;
 
     let cellValuesClone = _.cloneDeep(cellValues);
 
@@ -45,7 +53,7 @@ class GameStateContainer extends Component {
 
       let nextActivePlayer = {
         activePlayer: activePlayer === 1 ? 2 : 1,
-        mark: activePlayer === 1 ? '⭕' : `❌`,
+        mark: activePlayer === 1 ? playerMarks[1] : playerMarks[0],
       };
 
       this.setState({
