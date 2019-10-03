@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import { AppLoading } from 'expo';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
-import {
-  Container,
-  Header,
-  Title,
-  Content,
-  Footer,
-  FooterTab,
-  Button,
-  Left,
-  Right,
-  Body,
-  Icon,
-  Text,
-} from 'native-base';
+const AppNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: GameScreen,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+  },
+);
 
-import ContentContainer from './components/ContentContainer';
+const AppContainer = createAppContainer(AppNavigator);
 
-export default class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +30,6 @@ export default class App extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf'),
-      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       Righteous: require('./assets/fonts/Righteous.ttf'),
       ...Ionicons.font,
     });
@@ -44,23 +41,8 @@ export default class App extends React.Component {
       return <AppLoading />;
     }
 
-    return (
-      <Container>
-        <Header style={{ backgroundColor: 'rebeccapurple' }} androidStatusBarColor="rebeccapurple">
-          <Left>
-            <Button transparent>
-              <Icon name="menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={{ fontFamily: 'Righteous' }}>TicTacToesies</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
-          <ContentContainer />
-        </Content>
-      </Container>
-    );
+    return <AppContainer />;
   }
 }
+
+export default App;

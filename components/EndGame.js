@@ -22,7 +22,7 @@ const EndGame = (props) => {
     endGameDialogTitle = `🎉🎉 Player ${winnerInfo.activePlayer} has won! 🎉🎉`;
   } else {
     endGameMessage = `Tie! 
-    Looks like your skills are evenly matched`;
+    Looks like you're evenly matched`;
     endGameDialogTitle = `Tie! Want to give it another shot?`;
   }
 
