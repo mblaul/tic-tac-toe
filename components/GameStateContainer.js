@@ -81,7 +81,6 @@ class GameStateContainer extends Component {
           {isGameOver ? `Game over!` : `Player ${playerInfo.activePlayer}'s Turn!`}
         </H1>
         <GameGrid cellValues={cellValues} updateCell={this.updateCell} playerInfo={playerInfo} />
-        {/* Someone has won! */}
         {isGameOver && <EndGame winnerInfo={winnerInfo} setCurrentGame={setCurrentGame} />}
       </Fragment>
     );

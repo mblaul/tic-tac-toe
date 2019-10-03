@@ -1,28 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import { Container, Header, Title, Content, Button, Left, Right, Body, Icon } from 'native-base';
+import { Container, Content } from 'native-base';
 
 import ContentContainer from '../components/ContentContainer';
+import TopBar from '../components/TopBar';
 
-const GameScreen = () => {
-  return (
-    <Container>
-      <Header style={{ backgroundColor: 'rebeccapurple' }} androidStatusBarColor="rebeccapurple">
-        <Left>
-          <Button transparent>
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body>
-          <Title style={{ fontFamily: 'Righteous' }}>TicTacToesies</Title>
-        </Body>
-        <Right />
-      </Header>
-      <Content>
-        <ContentContainer />
-      </Content>
-    </Container>
-  );
-};
+class GameScreen extends Component {
+  static navigationOptions = {
+    title: 'Game',
+    header: null,
+  };
+
+  render() {
+    return (
+      <Container>
+        <TopBar showBackButton navigation={this.props.navigation} title="Game" />
+        <Content>
+          <ContentContainer />
+        </Content>
+      </Container>
+    );
+  }
+}
 
 export default GameScreen;
